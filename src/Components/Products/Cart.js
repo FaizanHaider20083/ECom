@@ -1,28 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const cart = [];
-
-
+const cartTotal = 0;
 
 const Shop = () => {
-
-  const [cartTotal,setCartTotal] = useState(0);
-
-
-  useEffect(() => {
-    total();
-  }, [cart]);
-
-  const total = () => {
-    console.log("here");
-    let totalVal = 0;
-    for (let i = 0; i < cart.length; i++) {
-      var string = cart[i].cost.split(" ")
-      var cost = parseInt(string[1]);
-      totalVal += cart[i].quantity*cost;
-    }
-    setCartTotal(totalVal);
-  };
     const [cartt,setCartt] = useState([]);
   
   
@@ -45,7 +26,7 @@ const Shop = () => {
 
   const cartItems = cart.map((el) => (
     <div key={el.id}>
-      {`${el.name}: ${el.cost}`}
+      {`${el.name}: $${el.price}`}
       <input type="submit" value="remove" onClick={() => removeFromCart(el)} />
     </div>
   ));
@@ -62,4 +43,4 @@ const Shop = () => {
 };
 
 export default Shop;
-export {cart};
+export {cart,cartTotal};

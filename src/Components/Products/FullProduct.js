@@ -2,7 +2,6 @@ import {React} from 'react'
 import styled from 'styled-components'
 import {cart} from './Cart';
 
-
 export default function({props}){
     console.log(props)
     const Backside = styled.div`
@@ -121,7 +120,7 @@ export default function({props}){
                         </FlexBox>
                     </QtyBox>
                     <FlexBox>
-                        <Button onClick = {() => {addToCart(props.product)}}>Add to cart</Button>
+                        <Button onClick = {() => {addToCart(props)}}>Add to cart</Button>
                     </FlexBox>
                 </DetailBox>
             </FlexBox>

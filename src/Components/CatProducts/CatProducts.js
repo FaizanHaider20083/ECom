@@ -3,15 +3,12 @@ import styled from 'styled-components'
 import Skeleton from '../Products/Skeleton'
 import Card from '../Products/Product'
 import Pagination from '../Pagination/Pagination'
-import Shop from '../Products/Cart';
-import {cart} from '../Products/Cart';
 
 import "../../Assets/YUI3.css"
 import { useParams } from 'react-router-dom'
 
 export default function CatProducts( {props} ){
     const {category} = useParams();
-    const [total,setTotal] = useState(0);
     console.log(category);
 
     const t1 =[];
@@ -33,21 +30,8 @@ export default function CatProducts( {props} ){
         setLoaded(true);
     }
 
-    const gettotal =() => {
-        let Sum = 0;
-        console.log("here")
-        cart.map(function(item){
-            Sum += item.quantity;
-        }
-        )
-
-        setTotal(Sum);
-
-    }
-
     useEffect(() => {
         getProducts();
-        gettotal();
         return () => {};
     }, []);
 
@@ -124,8 +108,6 @@ export default function CatProducts( {props} ){
         <SubHeading>
             Showing {Math.min(10,products.length-(currentPage-1)*max)} Out of {products.length} Results
         </SubHeading>
-        <Shop />
-
         <FilterContaineer onClick={sortOnClick}>Sort ({(sortState=='asc') ? 'Ascending' : 'Descending' })</FilterContaineer>
         <FlexBox>
         { (!loaded) ? <>
